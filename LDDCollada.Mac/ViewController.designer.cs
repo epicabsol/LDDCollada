@@ -41,6 +41,9 @@ namespace LDDCollada.Mac
 
 		[Action ("Convert:")]
 		partial void Convert (Foundation.NSObject sender);
+
+		[Action ("CopyTexturesToggled:")]
+		partial void CopyTexturesToggled (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{

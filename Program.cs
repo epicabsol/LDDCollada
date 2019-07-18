@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Xml.Linq;
-using System.Linq;
-using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using SharpDX;
-using System.Text;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Runtime.InteropServices;
 
 namespace LDDCollada
 {
@@ -47,7 +39,7 @@ namespace LDDCollada
             }
 
             LDDDB.Load(partDBPath, true, true, true, true);
-             
+
             foreach (string filename in args)
             {
                 if (filename.EndsWith(".lxfml", StringComparison.InvariantCultureIgnoreCase))

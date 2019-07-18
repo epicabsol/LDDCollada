@@ -180,6 +180,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="CopyTexturesToggled:" target="XfG-lQ-9wD" id="vN8-4F-bft"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dPJ-l8-HNh">
                                 <rect key="frame" x="181" y="81" width="283" height="18"/>
