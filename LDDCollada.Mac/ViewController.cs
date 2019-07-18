@@ -94,6 +94,12 @@ namespace LDDCollada.Mac
             FlipTextureCoordinatesCheckButton.State = DefaultFlipUV ? NSCellStateValue.On : NSCellStateValue.Off;
         }
 
+        public override void ViewDidDisappear()
+        {
+            base.ViewDidDisappear();
+            NSApplication.SharedApplication.Terminate(this);
+        }
+
         public override NSObject RepresentedObject
         {
             get
