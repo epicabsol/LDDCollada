@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29025.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDDCollada", "LDDCollada.csproj", "{F1CAE46E-F32C-4255-B4E5-E34C93B7EF4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDDCollada.Mac", "LDDCollada.Mac\LDDCollada.Mac.csproj", "{35115469-62A6-42EB-BB18-8AFF43A9B804}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDDCollada.Shared", "LDDCollada.Shared\LDDCollada.Shared.csproj", "{DEC1DA02-8E26-452A-97CF-866F56258238}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{F1CAE46E-F32C-4255-B4E5-E34C93B7EF4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1CAE46E-F32C-4255-B4E5-E34C93B7EF4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1CAE46E-F32C-4255-B4E5-E34C93B7EF4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35115469-62A6-42EB-BB18-8AFF43A9B804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35115469-62A6-42EB-BB18-8AFF43A9B804}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35115469-62A6-42EB-BB18-8AFF43A9B804}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35115469-62A6-42EB-BB18-8AFF43A9B804}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEC1DA02-8E26-452A-97CF-866F56258238}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC1DA02-8E26-452A-97CF-866F56258238}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC1DA02-8E26-452A-97CF-866F56258238}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC1DA02-8E26-452A-97CF-866F56258238}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
