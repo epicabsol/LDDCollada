@@ -198,6 +198,9 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Th7-3J-MXJ">
+                                <rect key="frame" x="361" y="23" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="z5i-Wz-se6" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="11W-tN-IZW"/>
@@ -213,6 +216,7 @@
                             <constraint firstItem="qzQ-Q4-0Sx" firstAttribute="top" secondItem="dPJ-l8-HNh" secondAttribute="bottom" constant="7" id="HgW-0a-3Ke"/>
                             <constraint firstItem="qzQ-Q4-0Sx" firstAttribute="trailing" secondItem="dPJ-l8-HNh" secondAttribute="trailing" id="J3z-hO-Djx"/>
                             <constraint firstItem="cDr-fa-cAP" firstAttribute="leading" secondItem="EnX-Ck-g2V" secondAttribute="leading" id="KWA-bS-hdP"/>
+                            <constraint firstItem="Th7-3J-MXJ" firstAttribute="centerY" secondItem="uwj-B9-3cD" secondAttribute="centerY" id="MJW-fb-p95"/>
                             <constraint firstItem="If2-Wo-8T3" firstAttribute="firstBaseline" secondItem="z5i-Wz-se6" secondAttribute="firstBaseline" id="NT9-eX-Vz2"/>
                             <constraint firstItem="kgT-wQ-IYu" firstAttribute="leading" secondItem="AzZ-dx-n5h" secondAttribute="trailing" constant="8" id="Opo-gv-0Xf"/>
                             <constraint firstItem="If2-Wo-8T3" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="QtR-hx-byZ"/>
@@ -221,6 +225,7 @@
                             <constraint firstItem="EnX-Ck-g2V" firstAttribute="top" secondItem="kgT-wQ-IYu" secondAttribute="bottom" constant="7" id="Xtr-o4-30W"/>
                             <constraint firstItem="EnX-Ck-g2V" firstAttribute="leading" secondItem="kgT-wQ-IYu" secondAttribute="leading" id="aP1-uP-xBq"/>
                             <constraint firstItem="kgT-wQ-IYu" firstAttribute="trailing" secondItem="If2-Wo-8T3" secondAttribute="trailing" id="dM0-Uu-PLM"/>
+                            <constraint firstItem="uwj-B9-3cD" firstAttribute="leading" secondItem="Th7-3J-MXJ" secondAttribute="trailing" constant="8" id="e4N-vb-x2z"/>
                             <constraint firstItem="z5i-Wz-se6" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="22" id="fLj-dM-KNw"/>
                             <constraint firstItem="tzh-qj-ns1" firstAttribute="leading" secondItem="kgT-wQ-IYu" secondAttribute="trailing" constant="8" id="gYp-Vn-Psj"/>
                             <constraint firstItem="If2-Wo-8T3" firstAttribute="leading" secondItem="z5i-Wz-se6" secondAttribute="trailing" constant="8" id="h9C-mc-qaZ"/>
@@ -247,6 +252,7 @@
                         <outlet property="GenerateBlanksCheckBox" destination="EnX-Ck-g2V" id="7sM-Cp-bEO"/>
                         <outlet property="GenerateBlanksCheckButton" destination="EnX-Ck-g2V" id="RcH-dK-mzS"/>
                         <outlet property="InputPathTextField" destination="kgT-wQ-IYu" id="2ia-nv-AX5"/>
+                        <outlet property="ProgressIndicator" destination="Th7-3J-MXJ" id="QgV-c4-AlH"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

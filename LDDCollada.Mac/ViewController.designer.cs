@@ -33,6 +33,9 @@ namespace LDDCollada.Mac
 		[Outlet]
 		AppKit.NSTextField InputPathTextField { get; set; }
 
+		[Outlet]
+		AppKit.NSProgressIndicator ProgressIndicator { get; set; }
+
 		[Action ("BrowseDB:")]
 		partial void BrowseDB (Foundation.NSObject sender);
 
@@ -47,6 +50,11 @@ namespace LDDCollada.Mac
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (ProgressIndicator != null) {
+				ProgressIndicator.Dispose ();
+				ProgressIndicator = null;
+			}
+
 			if (ConvertButton != null) {
 				ConvertButton.Dispose ();
 				ConvertButton = null;
@@ -67,6 +75,11 @@ namespace LDDCollada.Mac
 				FillTexturesCheckButton = null;
 			}
 
+			if (FlipTextureCoordinatesCheckButton != null) {
+				FlipTextureCoordinatesCheckButton.Dispose ();
+				FlipTextureCoordinatesCheckButton = null;
+			}
+
 			if (GenerateBlanksCheckButton != null) {
 				GenerateBlanksCheckButton.Dispose ();
 				GenerateBlanksCheckButton = null;
@@ -75,11 +88,6 @@ namespace LDDCollada.Mac
 			if (InputPathTextField != null) {
 				InputPathTextField.Dispose ();
 				InputPathTextField = null;
-			}
-
-			if (FlipTextureCoordinatesCheckButton != null) {
-				FlipTextureCoordinatesCheckButton.Dispose ();
-				FlipTextureCoordinatesCheckButton = null;
 			}
 		}
 	}

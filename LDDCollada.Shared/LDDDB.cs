@@ -31,6 +31,7 @@ namespace LDDCollada
             AssemblyCache = new Dictionary<string, XDocument>();
             foreach (string filename in System.IO.Directory.EnumerateFiles(Path.Combine(PartDBPath, "Assemblies")))
             {
+                Console.WriteLine("Loading assembly " + filename);
                 AssemblyCache.Add(System.IO.Path.GetFileNameWithoutExtension(filename), null);
             }
 
@@ -38,12 +39,14 @@ namespace LDDCollada
             PrimitiveCache = new Dictionary<string, Geometry>();
             foreach (string filename in Directory.EnumerateFiles(Path.Combine(PartDBPath, "Primitives")))
             {
+                Console.WriteLine("Loading primitive " + filename);
                 PrimitiveCache.Add(System.IO.Path.GetFileNameWithoutExtension(filename), null);
             }
 
             // Load materials
             Materials = new Dictionary<int, Material>();
             XDocument materialDoc = XDocument.Load(Path.Combine(PartDBPath, "Materials.xml"));
+            Console.WriteLine("Loading materials");
             foreach (XElement materialElement in materialDoc.Root.Elements("Material"))
             {
                 Material m = new Material(materialElement);

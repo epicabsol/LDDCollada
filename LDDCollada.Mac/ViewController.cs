@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 using AppKit;
 using Foundation;
@@ -61,27 +62,50 @@ namespace LDDCollada.Mac
             }
         }
 
+        private async Task DoConversion(string input)
+        {
+            ConvertButton.Enabled = false;
+            ProgressIndicator.Hidden = false;
+            ProgressIndicator.StartAnimation(this);
+
+            string dbPath = DBPathTextField.StringValue;
+            bool copyTextures = CopyTexturesCheckButton.State == NSCellStateValue.On;
+            bool fillTextures = FillTexturesCheckButton.State == NSCellStateValue.On;
+            bool generateBlanks = GenerateBlanksCheckButton.State == NSCellStateValue.On;
+            bool flipUV = FlipTextureCoordinatesCheckButton.State == NSCellStateValue.On;
+
+            await Task.Run(() =>
+            {
+                try
+                {
+                    LDDDB.Load(dbPath,
+                    copyTextures,
+                    fillTextures,
+                    generateBlanks,
+                    flipUV);
+
+                    if (input.EndsWith(".lxf", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        DAEConversion.ConvertLXF(input);
+                    }
+                    else if (input.EndsWith(".lxfml", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        DAEConversion.ConvertLXFML(input);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            });
+            ConvertButton.Enabled = true;
+            ProgressIndicator.Hidden = true;
+        }
+
         partial void Convert(NSObject sender)
         {
-            LDDDB.Load(DBPathTextField.StringValue,
-                CopyTexturesCheckButton.State == NSCellStateValue.On,
-                FillTexturesCheckButton.State == NSCellStateValue.On,
-                GenerateBlanksCheckButton.State == NSCellStateValue.On,
-                FlipTextureCoordinatesCheckButton.State == NSCellStateValue.On);
-
             string input = InputPathTextField.StringValue;
-            if (input.EndsWith(".lxf", StringComparison.InvariantCultureIgnoreCase))
-            {
-                DAEConversion.ConvertLXF(input);
-            }
-            else if (input.EndsWith(".lxfml", StringComparison.InvariantCultureIgnoreCase))
-            {
-                DAEConversion.ConvertLXFML(input);
-            }
-            else
-            {
-                NSAlert alert = NSAlert.WithMessage("Not an LXF or LXFML file!", "", "", "", "");
-            }
+            DoConversion(input);
         }
 
         partial void CopyTexturesToggled(NSObject sender)
