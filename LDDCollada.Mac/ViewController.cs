@@ -10,6 +10,74 @@ namespace LDDCollada.Mac
     {
         private const string LDD_DB_DEFAULT_PATH = "/Applications/LEGO Digital Designer.app/Contents/Resources/Assets/db";
 
+        private static string DefaultDBPath
+        {
+            get
+            {
+                string result = NSUserDefaults.StandardUserDefaults.StringForKey(nameof(DefaultDBPath));
+                if (result == null)
+                {
+                    if (System.IO.Directory.Exists(LDD_DB_DEFAULT_PATH))
+                        result = LDD_DB_DEFAULT_PATH;
+                    else
+                        result = "";
+                }
+                return result;
+            }
+            set
+            {
+                NSUserDefaults.StandardUserDefaults.SetString(value, nameof(DefaultDBPath));
+            }
+        }
+
+        private static bool DefaultCopyTextures
+        {
+            get
+            {
+                return NSUserDefaults.StandardUserDefaults.BoolForKey(nameof(DefaultCopyTextures));
+            }
+            set
+            {
+                NSUserDefaults.StandardUserDefaults.SetBool(value, nameof(DefaultCopyTextures));
+            }
+        }
+
+        private static bool DefaultFillTextures
+        {
+            get
+            {
+                return NSUserDefaults.StandardUserDefaults.BoolForKey(nameof(DefaultFillTextures));
+            }
+            set
+            {
+                NSUserDefaults.StandardUserDefaults.SetBool(value, nameof(DefaultFillTextures));
+            }
+        }
+
+        private static bool DefaultGenerateBlanks
+        {
+            get
+            {
+                return NSUserDefaults.StandardUserDefaults.BoolForKey(nameof(DefaultGenerateBlanks));
+            }
+            set
+            {
+                NSUserDefaults.StandardUserDefaults.SetBool(value, nameof(DefaultGenerateBlanks));
+            }
+        }
+
+        private static bool DefaultFlipUV
+        {
+            get
+            {
+                return NSUserDefaults.StandardUserDefaults.BoolForKey(nameof(DefaultFlipUV));
+            }
+            set
+            {
+                NSUserDefaults.StandardUserDefaults.SetBool(value, nameof(DefaultFlipUV));
+            }
+        }
+
         public ViewController(IntPtr handle) : base(handle)
         {
         }
@@ -19,8 +87,11 @@ namespace LDDCollada.Mac
             base.ViewDidLoad();
 
             // Do any additional setup after loading the view.
-            if (System.IO.Directory.Exists(LDD_DB_DEFAULT_PATH))
-                DBPathTextField.StringValue = LDD_DB_DEFAULT_PATH;
+            DBPathTextField.StringValue = DefaultDBPath;
+            CopyTexturesCheckButton.State = DefaultCopyTextures ? NSCellStateValue.On : NSCellStateValue.Off;
+            FillTexturesCheckButton.State = DefaultFillTextures ? NSCellStateValue.On : NSCellStateValue.Off;
+            GenerateBlanksCheckButton.State = DefaultGenerateBlanks ? NSCellStateValue.On : NSCellStateValue.Off;
+            FlipTextureCoordinatesCheckButton.State = DefaultFlipUV ? NSCellStateValue.On : NSCellStateValue.Off;
         }
 
         public override NSObject RepresentedObject
@@ -70,9 +141,15 @@ namespace LDDCollada.Mac
 
             string dbPath = DBPathTextField.StringValue;
             bool copyTextures = CopyTexturesCheckButton.State == NSCellStateValue.On;
-            bool fillTextures = FillTexturesCheckButton.State == NSCellStateValue.On;
+            bool fillTextures = FillTexturesCheckButton.State == NSCellStateValue.On && FillTexturesCheckButton.Enabled;
             bool generateBlanks = GenerateBlanksCheckButton.State == NSCellStateValue.On;
             bool flipUV = FlipTextureCoordinatesCheckButton.State == NSCellStateValue.On;
+
+            DefaultDBPath = dbPath;
+            DefaultCopyTextures = copyTextures;
+            DefaultFillTextures = fillTextures;
+            DefaultGenerateBlanks = generateBlanks;
+            DefaultFlipUV = flipUV;
 
             await Task.Run(() =>
             {
